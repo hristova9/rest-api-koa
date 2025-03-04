@@ -1,4 +1,3 @@
-import config from '../config';
 import * as dbLocal from './local';
 
 const dbs = {
