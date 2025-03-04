@@ -1,12 +1,10 @@
 import Router from "koa-router";
 import {
-  createUserValidationSchema,
   userValidationSchema,
 } from "./user.validation-schema";
 import { validator } from "../../core";
 import { CreatedUser, User } from "./user.interface";
 import {
-  createUser,
   deleteUserById,
   getUserById,
   getUsers,
@@ -31,12 +29,6 @@ userRouter.get("/", async (ctx) => {
       ctx.throw(500, "Unknown error");
     }
   }
-});
-
-userRouter.post("/", validator(createUserValidationSchema), async (ctx) => {
-  const user = await createUser(ctx.request.body as User);
-  ctx.status = 201;
-  ctx.body = user;
 });
 
 userRouter.get("/:id", async (ctx) => {
