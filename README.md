@@ -26,7 +26,7 @@ This project is a REST API built using **Koa.js**. The API follows best practice
 
 This API uses **JWT (JSON Web Tokens)** for authentication and authorization.
 
-- **Sign-up (`/api/auth/signup`)**: Registers a new user and hashes the password using bcrypt.
+- **Sign-up (`/auth/sign-up`)**: Registers a new user and hashes the password using bcrypt.
   - Request Body:
     ```json
     {
@@ -38,12 +38,11 @@ This API uses **JWT (JSON Web Tokens)** for authentication and authorization.
   - Response:
     ```json
     {
-      "message": "User registered successfully",
       "user": { "id": "12345", "username": "example", "email": "user@example.com" }
     }
     ```
 
-- **Sign-in (`/api/auth/signin`)**: Authenticates the user and returns a JWT token.
+- **Sign-in (`/auth/sign-in`)**: Authenticates the user and returns a JWT token.
   - Request Body:
     ```json
     {
@@ -58,7 +57,7 @@ This API uses **JWT (JSON Web Tokens)** for authentication and authorization.
     }
     ```
 
-- **Sign-out (`/api/auth/signout`)**: Logs out the user by invalidating the token (handled with token blacklisting and cookies).
+- **Sign-out (`/auth/sign-out`)**: Logs out the user by invalidating the token (handled with token blacklisting and cookies).
   - Response:
     ```json
     {

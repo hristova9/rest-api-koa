@@ -23,8 +23,14 @@ authRouter.post(
   async (ctx) => {
     try {
       const user = await createUser(ctx.request.body as User);
+      if (!user) {
+        ctx.throw(400, "User creation failed");
+        return;
+      }
+      const { password, ...userWithoutPassword } = user;
+
       ctx.status = 201;
-      ctx.body = user;
+      ctx.body = userWithoutPassword;
     } catch (err) {
       if (err instanceof Error) {
         ctx.throw(400, err.message);
